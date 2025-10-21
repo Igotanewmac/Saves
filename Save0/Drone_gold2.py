@@ -60,6 +60,7 @@ def runthis():
 	for drone in dronelist:
 		wait_for(drone)
 
-		
+while 1:
+	runthis()
 
 	

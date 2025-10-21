@@ -433,8 +433,17 @@ unlock(Unlocks.Fertilizer)
 unlock(Unlocks.Mazes)
 
 
+
+
+
+amountofweird = (2**(num_unlocked(Unlocks.Mazes) -1))*get_world_size()
+
+dirleft = { North:West , West:South , South:East , East:North }
+dirright = { North:East , East:South , South:West , West:North }
+
+
 def weirstuffroutine():
-	while num_items(Items.Weird_Substance) < 1000:
+	while num_items(Items.Weird_Substance) < amountofweird*301:
 		for x in range(get_world_size()):
 			for y in range(get_world_size()):
 				if can_harvest():
@@ -450,26 +459,8 @@ def weirstuffroutine():
 				move(North)
 			move(East)
 
-
-
-def plantroutine():
-	for _ in range( get_world_size() ):
-		if get_water() < 0.25:
-			use_item(Items.Water)
-		plant(Entities.Bush)
-		move(North)
-	for _ in range( get_world_size() ):
-		while not can_harvest():
-			pass
-		use_item( Items.Weird_Substance , (2**(num_unlocked(Unlocks.Mazes) -1)) )
-		harvest()
-		move(North)
-
-
-while num_items(Items.Gold) < 1000000:
-	if num_items(Items.Weird_Substance) < 10:
-		weirstuffroutine()
-	plantroutine()
+while 1:
+	pass
 
 unlock(Unlocks.Leaderboard)
 
